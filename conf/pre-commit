@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+
+# PROJ_CILINT="./node_modules/cilint/bin/cilint.js"
+PROJ_CILINT="./bin/cilint.js"
+
+if [ -f ${PROJ_CILINT} ];then
+    cilint=${PROJ_CILINT}
+elif type cilint >/dev/null 2>&1;then
+    cilint='cilint'
+else
+    echo "No cilint found. Please try npm install cilint first."
+    exit 1
+fi
+
+# Get cilint code
+exec ${cilint}
+
