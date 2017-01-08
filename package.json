@@ -1,0 +1,49 @@
+{
+  "name": "cilint",
+  "version": "0.0.1",
+  "description": "Commit lint for Git",
+  "homepage": "https://github.com/feix760/cilint",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feix760/cilint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feix760/cilint/issues/"
+  },
+  "author": {
+    "name": "fishine",
+    "email": "382184760@qq.com"
+  },
+  "main": "./lib/cilint.js",
+  "bin": {
+    "cilint": "./bin/cilint.js"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+    "deasync": "^0.1.9",
+    "chalk": "^1.1.3",
+    "text-table": "^0.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "hook",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "eslint",
+    "javascript",
+    "git",
+    "hook",
+    "code review"
+  ],
+  "license": "MIT"
+}
