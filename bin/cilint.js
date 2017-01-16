@@ -10,12 +10,6 @@
 'use strict';
 
 //------------------------------------------------------------------------------
-// Helpers
-//------------------------------------------------------------------------------
-const init = (process.argv.indexOf('--init') > -1),
-    debug = (process.argv.indexOf('--debug') > -1);
-
-//------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
@@ -34,9 +28,4 @@ process.once('uncaughtException', err => {
     process.exitCode = 1;
 });
 
-if (init) {
-    process.exitCode = cli.init(process.argv);
-} else {
-    process.exitCode = cli.execute(process.argv);
-}
-
+process.exitCode = cli.execute(process.argv);

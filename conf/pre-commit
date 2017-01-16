@@ -5,8 +5,8 @@
 # it wants to stop the commit.
 #
 
-# PROJ_CILINT="./node_modules/cilint/bin/cilint.js"
-PROJ_CILINT="./bin/cilint.js"
+PROJ_CILINT="./node_modules/cilint/bin/cilint.js"
+# PROJ_CILINT="./bin/cilint.js"
 
 if [ -f ${PROJ_CILINT} ];then
     cilint=${PROJ_CILINT}
@@ -18,5 +18,5 @@ else
 fi
 
 # Get cilint code
-exec ${cilint}
+exec "${cilint} --cached"
 
