@@ -1,6 +1,6 @@
 {
   "name": "cilint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Commit lint for Git",
   "homepage": "https://github.com/feix760/cilint",
   "repository": {
@@ -41,9 +41,10 @@
   },
   "files": [
     "lib",
+    "conf",
     "bin",
-    "hook",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "keywords": [
