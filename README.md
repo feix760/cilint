@@ -77,10 +77,22 @@ require('cilint').initializer();
 
 ## Configuring 
 
-`.cilintrc.js`配置项
+`.cilintrc.js`配置
 
 - stopCommit `Boolean` `default` `true` 存在error时是否阻止commit
 - ignore `Array.<String>` `default` `[]` 代码检查忽略列表
+
+`.eslintrc.js`配置
+
+参考http://eslint.org/docs/user-guide/configuring
+
+## ESLint Rules
+
+- [eslint](http://eslint.org/docs/rules/)
+- [airbnb](https://github.com/airbnb/javascript)
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+- [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import#rules)
+- [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y#supported-rules)
 
 ## FAQ
 
