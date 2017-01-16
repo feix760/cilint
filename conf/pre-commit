@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# CILint v0.0.3
+# CILint v0.0.4
 #
 # Called by "git commit" with no arguments.  The hook should
 # exit with non-zero status after issuing an appropriate message if
