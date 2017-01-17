@@ -1,6 +1,6 @@
 {
   "name": "cilint",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Commit lint for Git",
   "homepage": "https://github.com/feix760/cilint",
   "repository": {
@@ -45,7 +45,7 @@
     "babel-preset-stage-0": "^6.5.0"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=0.12"
   },
   "files": [
     "lib",
