@@ -14,7 +14,7 @@ const stylish = require('./formatters/stylish');
 const options = require("./options");
 
 const errorFixHelp = `
-You can use 'git commit --no-verify' to skip check.
+Use 'git commit --no-verify' to skip check.
 These links are helpful to fix them:
    eslint: ${chalk.underline('http://eslint.org/docs/rules/')}
    eslint-plugin-react: ${chalk.underline('https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules')}
