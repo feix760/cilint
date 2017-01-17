@@ -27,6 +27,7 @@ module.exports = {
         "import/no-unresolved": "off",
         "import/no-named-as-default-member": "off",
         "import/no-named-as-default": "off",
+        "import/no-extraneous-dependencies": "warn",
         "react/prop-types": "off",
         "react/jsx-filename-extension": "off",
         "react/jsx-indent": ["error", 4]
