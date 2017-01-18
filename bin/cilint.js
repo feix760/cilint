@@ -22,7 +22,6 @@ const cli = require('../lib/cli');
 process.once('uncaughtException', err => {
 
     console.log('Oops! Something went wrong!');
-    console.log(err.message);
     console.log(err.stack);
 
     process.exitCode = 1;

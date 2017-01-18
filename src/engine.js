@@ -203,9 +203,17 @@ class Engine {
             // eslint如果有错误child_process会exit=1, 此时如果使用execSync会抛异常
             child_process.exec(cmd, (error, stdout) => {
                 let lint = [];
+                const stdoutStr = stdout.toString() || '';
                 try {
-                    lint = JSON.parse(stdout.toString()) || [];
+                    lint = JSON.parse(stdoutStr) || [];
                 } catch(ex) {
+                    if (stdoutStr.length > 10) {
+                        let message = `\n\nESLint path: ${eslintPath}`;
+
+                        message += stdoutStr.replace(/\nOops![^\n]*/, '');
+
+                        throw new Error(message);
+                    }
                 }
                 const ret = {};
                 lint.forEach((item) => {
