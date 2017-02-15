@@ -1,5 +1,4 @@
-
-module.exports = {
+module.exports={
     "extends": "airbnb",
     "installedESLint": true,
     "parser": "babel-eslint",
@@ -13,9 +12,13 @@ module.exports = {
         "import"
     ],
     "rules": {
-        "indent": ["error", 4, {
-            "SwitchCase": 1
-        }],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
         "comma-dangle": "warn",
         "no-param-reassign": "warn",
         "no-underscore-dangle": "off",
@@ -24,10 +27,24 @@ module.exports = {
         "no-unused-expressions": "warn",
         "keyword-spacing": "warn",
         "consistent-return": "off",
-        "one-var": ["warn", "always"],
-        "arrow-body-style": ["warn", "as-needed"],
-        "space-before-function-paren": ["error", "never"],
-        "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+        "one-var": [
+            "warn",
+            "always"
+        ],
+        "arrow-body-style": [
+            "warn",
+            "as-needed"
+        ],
+        "space-before-function-paren": [
+            "error",
+            "never"
+        ],
+        "no-trailing-spaces": [
+            "error",
+            {
+                "skipBlankLines": true
+            }
+        ],
         "import/no-absolute-path": "off",
         "import/extensions": "off",
         "import/no-unresolved": "off",
@@ -36,7 +53,13 @@ module.exports = {
         "import/no-extraneous-dependencies": "warn",
         "react/prop-types": "off",
         "react/jsx-filename-extension": "off",
-        "react/jsx-indent": ["error", 4],
-        "react/jsx-indent-props": ["error", 4]
+        "react/jsx-indent": [
+            "error",
+            4
+        ],
+        "react/jsx-indent-props": [
+            "error",
+            4
+        ]
     }
-};
+}

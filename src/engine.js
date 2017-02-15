@@ -202,8 +202,8 @@ class Engine {
             const cmd = `node ${eslintPath} -f json ${files.map(str => `"${str}"`).join(' ')}`;
             // eslint如果有错误child_process会exit=1, 此时如果使用execSync会抛异常
             child_process.exec(cmd, (error, stdout) => {
-                let lint = [];
                 const stdoutStr = stdout.toString() || '';
+                let lint = [];
                 try {
                     lint = JSON.parse(stdoutStr) || [];
                 } catch(ex) {

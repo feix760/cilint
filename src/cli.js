@@ -11,7 +11,7 @@ const chalk = require('chalk');
 const CliEngine = require('./cli-engine');
 const initializer = require('./initializer');
 const stylish = require('./formatters/stylish');
-const options = require("./options");
+const options = require('./cli-options');
 
 const errorFixHelp = `
 Use 'git commit --no-verify' to skip check.
