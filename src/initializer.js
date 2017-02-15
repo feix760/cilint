@@ -50,8 +50,16 @@ function initCilintrc(options) {
     if (options.override || !fs.existsSync(rcPath)) {
         const url = options.cilintUrl;
 
-        writeRc(rcPath, url ? wget(url) : require('../conf/cilintrc.js'), options.cilintrc);
-        return rcPath;
+        if (url) {
+            const rc = wget(url);
+            if (rc) {
+                writeRc(rcPath, rc, options.cilintrc);
+                return rcPath;
+            }
+        } else {
+            writeRc(rcPath, require('../conf/cilintrc.js'), options.cilintrc);
+            return rcPath;
+        }
     }
 }
 
@@ -66,8 +74,16 @@ function initEslintrc(options) {
     if (options.override || !fs.existsSync(rcPath)) {
         const url = options.eslintrcUrl;
 
-        writeRc(rcPath, url ? wget(url) : require('../conf/eslintrc.js'), options.eslintrc);
-        return rcPath;
+        if (url) {
+            const rc = wget(url);
+            if (rc) {
+                writeRc(rcPath, rc, options.eslintrc);
+                return rcPath;
+            }
+        } else {
+            writeRc(rcPath, require('../conf/eslintrc.js'), options.eslintrc);
+            return rcPath;
+        }
     }
 }
 
