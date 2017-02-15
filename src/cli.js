@@ -3,8 +3,6 @@
  * @author Fishine.Yuan
  */
 
-'use strict';
-
 /* eslint no-console:off */
 
 const chalk = require('chalk');

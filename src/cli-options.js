@@ -1,6 +1,4 @@
 
-'use strict';
-
 const optionator = require('optionator');
 
 module.exports = optionator({
@@ -14,21 +12,21 @@ module.exports = optionator({
             heading: 'Basic configuration'
         },
         {
-            option: "cached",
-            alias: "c",
-            type: "Boolean",
-            description: "Use git diff --cached option"
+            option: 'cached',
+            alias: 'c',
+            type: 'Boolean',
+            description: 'Use git diff --cached option'
         },
         {
-            option: "init",
-            type: "Boolean",
-            description: "Init project"
+            option: 'init',
+            type: 'Boolean',
+            description: 'Init project'
         },
         {
-            option: "help",
-            alias: "h",
-            type: "Boolean",
-            description: "Show help"
+            option: 'help',
+            alias: 'h',
+            type: 'Boolean',
+            description: 'Show help'
         }
     ]
 });

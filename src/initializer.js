@@ -77,10 +77,8 @@ function initEslintrc(options) {
  * @return {?String}
  */
 function initPreCommit(options) {
-    const preCommitTo = '.git/hooks/pre-commit';
-
-    const from = path.join(__dirname, '../conf/pre-commit'),
-        to = preCommitTo;
+    const from = path.join(__dirname, '../conf/pre-commit');
+    const to = '.git/hooks/pre-commit';
 
     let version;
     if (fs.existsSync(to)) {
@@ -90,7 +88,7 @@ function initPreCommit(options) {
     // check pre-commit version
     if (options.override || version !== PRECOMMIT_VERSION) {
         fs.copySync(from, to);
-        return preCommitTo;
+        return to;
     }
 }
 
