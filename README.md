@@ -76,8 +76,9 @@ cilint yourfile.js
 // 等同于`cilint --init`
 require('cilint').initializer({
     // override: true,
-    // cilintrcUrl: 'https://',
-    // eslintrcUrl: 'https://',
+    // cilintrcUrl: 'https://raw.githubusercontent.com/feix760/cilint/master/conf/cilintrc.js',
+    // eslintrcUrl: 'https://raw.githubusercontent.com/feix760/cilint/master/conf/eslintrc.js',
+    // editorconfigUrl: 'https://raw.githubusercontent.com/feix760/cilint/master/conf/editorconfig',
 });
 ```
 
@@ -105,7 +106,8 @@ require('cilint').initializer({
 - `options.cilintrc` `Object` `可选` cilintrc配置项
 - `options.cilintrcUrl` `String` `可选` 从指定url拉取cilintrc配置项, 可以结合override = true使用
 - `options.eslintrc` `Object` `可选` eslintrc配置项
-- `options.eslintrcUrl` `String` `可选` 从指定url拉取eslintrc配置项, 可以结合override = true使用
+- `options.eslintrcUrl` `String` `可选` 从指定url拉取eslintrc配置项
+- `options.editorconfigUrl` `String` `可选` 从指定url拉取editorconfig配置项; 只有在配置了editorconfigUrl才会初始化生成`.editorconfig`文件
 
 ## ESLint Rules
 

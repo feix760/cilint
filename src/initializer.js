@@ -134,9 +134,10 @@ function initPreCommit(options) {
  * @param {Object} options
  * @param {?Boolean} options.override
  * @param {?Object} options.cilintrc
- * @param {?cilintrcUrl} options.cilintrcUrl
+ * @param {?String} options.cilintrcUrl
  * @param {?Object} options.eslintrc
- * @param {?eslintrcUrl} options.eslintrcUrl
+ * @param {?String} options.eslintrcUrl
+ * @param {?String} options.editorconfigUrl
  */
 const initializer = function(options = {}) {
     const initers = [

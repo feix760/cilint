@@ -11,6 +11,6 @@ module.exports = {
 
     Engine,
 
-    version: '0.0.18',
+    version: '0.0.19',
 };
 
