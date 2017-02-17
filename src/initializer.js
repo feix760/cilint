@@ -48,7 +48,7 @@ function initCilintrc(options) {
     const rcPath = '.cilintrc.js';
 
     if (options.override || !fs.existsSync(rcPath)) {
-        const url = options.cilintUrl;
+        const url = options.cilintrcUrl;
 
         if (url) {
             const rc = wget(url);
@@ -113,7 +113,9 @@ function initPreCommit(options) {
  * @param {Object} options
  * @param {?Boolean} options.override
  * @param {?Object} options.cilintrc
+ * @param {?cilintrcUrl} options.cilintrcUrl
  * @param {?Object} options.eslintrc
+ * @param {?eslintrcUrl} options.eslintrcUrl
  */
 const initializer = function(options = {}) {
     const initers = [
