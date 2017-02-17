@@ -103,6 +103,35 @@ function getESLintPath(root) {
     return eslint || null;
 }
 
+/**
+ * Exe eslint cmd
+ * @param {?Object} options
+ * @return {Array.<Object>}
+ */
+function exeEslint(options) {
+    const { eslintPath, files } = options;
+    return deasync((done) => {
+        const cmd = `node ${eslintPath} -f json ${files.map(str => `"${str}"`).join(' ')}`;
+        // eslint如果有错误child_process会exit=1, 此时如果使用execSync会抛异常
+        child_process.exec(cmd, (error, stdout) => {
+            const stdoutStr = stdout.toString() || '';
+            let lint = [];
+            try {
+                lint = JSON.parse(stdoutStr) || [];
+            } catch(ex) {
+                if (stdoutStr.length > 10) {
+                    let message = `\n\nESLint path: ${eslintPath}`;
+
+                    message += stdoutStr.replace(/\nOops![^\n]*/, '');
+
+                    throw new Error(message);
+                }
+            }
+            done(null, lint);
+        });
+    })();
+}
+
 class Engine {
     /**
      * @construtor
@@ -198,37 +227,28 @@ class Engine {
             throw new Error('Could not find eslint');
         }
 
-        // TODO files.length to long
-        return deasync((done) => {
-            const cmd = `node ${eslintPath} -f json ${files.map(str => `"${str}"`).join(' ')}`;
-            // eslint如果有错误child_process会exit=1, 此时如果使用execSync会抛异常
-            child_process.exec(cmd, (error, stdout) => {
-                const stdoutStr = stdout.toString() || '';
-                let lint = [];
-                try {
-                    lint = JSON.parse(stdoutStr) || [];
-                } catch(ex) {
-                    if (stdoutStr.length > 10) {
-                        let message = `\n\nESLint path: ${eslintPath}`;
+        const PRE_COUNT = 20;
+        let lintList = [];
 
-                        message += stdoutStr.replace(/\nOops![^\n]*/, '');
+        for (let i = 0; i < files.length; i += PRE_COUNT) {
+            lintList = lintList.concat(exeEslint({
+                eslintPath,
+                files: files.slice(i, i + PRE_COUNT),
+            }));
+        }
 
-                        throw new Error(message);
-                    }
-                }
-                const ret = {};
-                lint.forEach((item) => {
-                    item.messages.forEach((msg) => {
-                        msg.isError = msg.severity > 1 || msg.fatal;
-                    });
-
-                    ret[item.filePath] = {
-                        messages: item.messages,
-                    };
-                });
-                done(null, ret);
+        const ret = {};
+        lintList.forEach((item) => {
+            item.messages.forEach((msg) => {
+                msg.isError = msg.severity > 1 || msg.fatal;
             });
-        })();
+
+            ret[item.filePath] = {
+                messages: item.messages,
+            };
+        });
+
+        return ret;
     }
 
     /**

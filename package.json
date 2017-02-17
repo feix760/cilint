@@ -19,7 +19,6 @@
     "cilint": "./bin/cilint.js"
   },
   "scripts": {
-    "prepublish": "babel src -d lib",
     "build": "babel src -d lib",
     "dev": "babel src -d lib -w"
   },

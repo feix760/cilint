@@ -11,7 +11,7 @@ const initializer = require('./initializer');
 const stylish = require('./formatters/stylish');
 const options = require('./cli-options');
 
-const errorFixHelp = `
+const ERROR_FIX_HELP = `
 Use 'git commit --no-verify' to skip check.
 These links are helpful to fix them:
    eslint: ${chalk.underline('http://eslint.org/docs/rules/')}
@@ -28,7 +28,7 @@ function printResults(results) {
     let stdout = stylish(results);
 
     if (stdout) {
-        stdout += errorFixHelp;
+        stdout += ERROR_FIX_HELP;
     }
     console.log(stdout ? stdout : 'Cilint pass');
 }
