@@ -19,7 +19,7 @@ function wget(url) {
             timeout: 3000
         }, (error, response, body) => {
             if (!error && response.statusCode === 200) {
-                done(null, requireFromString(body));
+                done(null, body);
             } else {
                 // TODO log error
                 done(null, null);
@@ -51,9 +51,9 @@ function initCilintrc(options) {
         const url = options.cilintrcUrl;
 
         if (url) {
-            const rc = wget(url);
-            if (rc) {
-                writeRc(rcPath, rc, options.cilintrc);
+            const text = wget(url);
+            if (text) {
+                writeRc(rcPath, requireFromString(text), options.cilintrc);
                 return rcPath;
             }
         } else {
@@ -75,14 +75,35 @@ function initEslintrc(options) {
         const url = options.eslintrcUrl;
 
         if (url) {
-            const rc = wget(url);
-            if (rc) {
-                writeRc(rcPath, rc, options.eslintrc);
+            const text = wget(url);
+            if (text) {
+                writeRc(rcPath, requireFromString(text), options.eslintrc);
                 return rcPath;
             }
         } else {
             writeRc(rcPath, require('../conf/eslintrc.js'), options.eslintrc);
             return rcPath;
+        }
+    }
+}
+
+/**
+ * Init editorconfig
+ * @param {Object} options
+ * @return {?String}
+ */
+function initEditorconfig(options) {
+    const rcPath = '.editorconfig';
+
+    if (options.override || !fs.existsSync(rcPath)) {
+        const url = options.editorconfigUrl;
+
+        if (url) {
+            const text = wget(url);
+            if (text) {
+                fs.writeFileSync(rcPath, text);
+                return rcPath;
+            }
         }
     }
 }
@@ -121,7 +142,8 @@ const initializer = function(options = {}) {
     const initers = [
         initCilintrc,
         initEslintrc,
-        initPreCommit
+        initEditorconfig,
+        initPreCommit,
     ];
 
     const copyed = [];
