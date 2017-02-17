@@ -111,8 +111,8 @@ require('cilint').initializer({
 
 - [eslint](http://eslint.org/docs/rules/)
 - [airbnb](https://github.com/airbnb/javascript)
-- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
 - [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import#rules)
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
 - [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y#supported-rules)
 
 ## FAQ

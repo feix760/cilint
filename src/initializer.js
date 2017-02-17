@@ -36,7 +36,7 @@ function wget(url) {
 function writeRc(to, ...args) {
     const rc = Object.assign({}, ...args);
 
-    fs.writeFileSync(to, `module.exports=${JSON.stringify(rc, null, 4)}`);
+    fs.writeFileSync(to, `module.exports = ${JSON.stringify(rc, null, 4)}`);
 }
 
 /**

@@ -15,8 +15,8 @@ const ERROR_FIX_HELP = `
 Use 'git commit --no-verify' to skip check.
 These links are helpful to fix them:
    eslint: ${chalk.underline('http://eslint.org/docs/rules/')}
-   eslint-plugin-react: ${chalk.underline('https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules')}
    eslint-plugin-import: ${chalk.underline('https://github.com/benmosher/eslint-plugin-import#rules')}
+   eslint-plugin-react: ${chalk.underline('https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules')}
    eslint-plugin-jsx-a11y: ${chalk.underline('https://github.com/evcohen/eslint-plugin-jsx-a11y#supported-rules')}
 `;
 
