@@ -83,12 +83,12 @@ require('cilint').initializer({
 
 ## Configuring 
 
-`.cilintrc.js`配置
+### `.cilintrc.js`配置
 
 - stopCommit `Boolean` `default` `true` 存在error时是否阻止commit
 - ignore `Array.<String>` `default` `[]` 代码检查忽略列表
 
-`.eslintrc.js`配置
+### `.eslintrc.js`配置
 
 参考http://eslint.org/docs/user-guide/configuring
 
@@ -100,12 +100,12 @@ require('cilint').initializer({
 
 #### Arguments
 
-- `option` `{Object}`
-- `option.override` `{?Boolean}` `可选` 是否覆盖`.cilintrc.js`,`.eslintrc.js`等文件 `default` false
-- `option.cilintrc` `{?Object}` `可选` cilintrc cilintrc配置项
-- `option.cilintrcUrl` `{?String}` `可选` cilintrcUrl 从指定url拉取cilintrc配置项, 可以结合override = true使用
-- `option.eslintrc` `{?Object}` `可选` eslintrc eslintrc配置项
-- `option.eslintrcUrl` `{?String}` `可选` eslintrcUrl 从指定url拉取eslintrc配置项, 可以结合override = true使用
+- `options` `Object`
+- `options.override` `Boolean` `可选` `default` `false` 是否覆盖`.cilintrc.js`,`.eslintrc.js`等文件
+- `options.cilintrc` `Object` `可选` cilintrc配置项
+- `options.cilintrcUrl` `String` `可选` 从指定url拉取cilintrc配置项, 可以结合override = true使用
+- `options.eslintrc` `Object` `可选` eslintrc配置项
+- `options.eslintrcUrl` `String` `可选` 从指定url拉取eslintrc配置项, 可以结合override = true使用
 
 ## ESLint Rules
 
@@ -119,11 +119,11 @@ require('cilint').initializer({
 
 ### CILint如何选择ESLint的？
 
-CILint首先会以项目根目录require ESLint, 这有可能会require到项目下的node_modules/eslint或者全局的eslint, 如果没有, 将使用CILint/node_modules/ESLint
+CILint首先会以项目根目录require ESLint, 这有可能会require到项目下的node_modules/eslint或者全局的eslint, 如果没有将使用CILint/node_modules/ESLint
 
 注意:
 - ESLint和它的插件必须在同级node_modules下, 例如如果使用了全局的ESLint所有插件也必须全局安装
-- 如果使用CILint下的ESLint, 部分插件并没有在CILint下
+- 如果使用CILint下的ESLint部分插件并没有在CILint下
 
 [npm-image]: https://img.shields.io/npm/v/cilint.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/cilint
