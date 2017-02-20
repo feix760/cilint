@@ -1,6 +1,6 @@
 {
   "name": "cilint",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Commit lint for Git",
   "homepage": "https://github.com/feix760/cilint",
   "repository": {
