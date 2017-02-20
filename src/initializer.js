@@ -8,9 +8,9 @@ const deasync = require('deasync');
 const PRECOMMIT_VERSION = '0.0.1';
 
 /**
- * Wget exports from url
+ * Wget text from url
  * @param {String} url
- * @return {Object}
+ * @return {String}
  */
 function wget(url) {
     return deasync(done => {
@@ -104,6 +104,12 @@ function initEditorconfig(options) {
                 fs.writeFileSync(rcPath, text);
                 return rcPath;
             }
+        } else {
+            fs.writeFileSync(
+                rcPath,
+                fs.readFileSync(path.join(__dirname, '../conf/editorconfig'))
+            );
+            return rcPath;
         }
     }
 }
@@ -123,7 +129,7 @@ function initPreCommit(options) {
     }
 
     // check pre-commit version
-    if (options.override || version !== PRECOMMIT_VERSION) {
+    if (version !== PRECOMMIT_VERSION) {
         fs.copySync(from, to);
         return to;
     }
@@ -138,6 +144,7 @@ function initPreCommit(options) {
  * @param {?Object} options.eslintrc
  * @param {?String} options.eslintrcUrl
  * @param {?String} options.editorconfigUrl
+ * @return {Object}
  */
 const initializer = function(options = {}) {
     const initers = [

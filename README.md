@@ -107,7 +107,7 @@ require('cilint').initializer({
 - `options.cilintrcUrl` `String` `可选` 从指定url拉取cilintrc配置项, 可以结合override = true使用
 - `options.eslintrc` `Object` `可选` eslintrc配置项
 - `options.eslintrcUrl` `String` `可选` 从指定url拉取eslintrc配置项
-- `options.editorconfigUrl` `String` `可选` 从指定url拉取editorconfig配置项; 只有在配置了editorconfigUrl才会初始化生成`.editorconfig`文件
+- `options.editorconfigUrl` `String` `可选` 从指定url拉取editorconfig配置项
 
 ## ESLint Rules
 
@@ -126,6 +126,10 @@ CILint首先会以项目根目录require ESLint, 这有可能会require到项目
 注意:
 - ESLint和它的插件必须在同级node_modules下, 例如如果使用了全局的ESLint所有插件也必须全局安装
 - 如果使用CILint下的ESLint部分插件并没有在CILint下
+
+
+<br>
+[CHANGELOG](CHANGELOG.md) [LICENSE](LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/cilint.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/cilint
