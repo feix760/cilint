@@ -10,13 +10,13 @@ const DEFAULT_RC = require('../conf/cilintrc.js');
  * Diff stdout expr
  * @type {RegExp}
  */
-const DIFF_REG = /(\n|^)diff --git a\/(\S+) b\/\2[\s\S]*?\n\+\+\+[^\n]*((\n[ +\-@][^\n]*)*)/gi;
+const DIFF_REG = /(\n|^)diff --git a\/(\S+) b\/\2[\s\S]*?\n\+\+\+[^\n]*((\n[ +\-\\@][^\n]*)*)/gi;
 
 /**
  * Modified region expr
  * @type {RegExp}
  */
-const MODIFY_REG = /\n@@ -(\d+),\d+ \+(\d+),\d+ @@[^\n]*((\n[ \-+][^\n]*)*)/gi;
+const MODIFY_REG = /\n@@ -(\d+),\d+ \+(\d+),\d+ @@[^\n]*((\n[ +\-\\][^\n]*)*)/gi;
 
 /**
  * Get modified lines for sign file
@@ -30,6 +30,10 @@ function getModifiedLines(modify) {
         const text = match[3];
         let newline = +match[2];
         text.replace(/^\n/, '').split(/\n/).forEach((line) => {
+            // skip '\ No newline at end of file'
+            if (line.match(/^\\/)) {
+                return;
+            }
             if (line.match(/^\+/)) {
                 lines.push(newline);
             }
