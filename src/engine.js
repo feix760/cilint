@@ -10,7 +10,7 @@ const DEFAULT_RC = require('../conf/cilintrc.js');
  * Diff stdout expr
  * @type {RegExp}
  */
-const DIFF_REG = /(\n|^)diff --git a\/(\S+) b\/\2[\s\S]*?\n\+\+\+[^\n]*((\n[ +\-\\@][^\n]*)*)/gi;
+const DIFF_REG = /(\n|^)diff --git a\/(\S+) b\/\2[^\n]*/gi;
 
 /**
  * Modified region expr
@@ -52,19 +52,37 @@ function getModifiedLines(modify) {
  */
 function getModifiedFilesFromDiff(diff) {
     const files = [];
-    let match = null;
-    while (match = DIFF_REG.exec(diff)) {
-        const filePath = match[2];
-        const modify = match[3];
+
+    let prevFilePath,
+        prevStartIndex,
+        match;
+
+    function collect(end) {
+        const modify = diff.substring(prevStartIndex, end);
+
         const lines = getModifiedLines(modify);
 
         if (lines.length) {
             files.push({
-                filePath,
+                filePath: prevFilePath,
                 lines
             });
         }
     }
+
+    while (match = DIFF_REG.exec(diff)) {
+        if (prevFilePath) {
+            collect(match.index);
+        }
+
+        prevFilePath = match[2];
+        prevStartIndex = match.index;
+    }
+
+    if (prevFilePath) {
+        collect(diff.length);
+    }
+
     return files;
 }
 
