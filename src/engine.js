@@ -30,14 +30,11 @@ function getModifiedLines(modify) {
         const text = match[3];
         let newline = +match[2];
         text.replace(/^\n/, '').split(/\n/).forEach((line) => {
-            // skip lines start with '\' eg: '\ No newline at end of file'
-            if (line.match(/^\\/)) {
-                return;
-            }
             if (line.match(/^\+/)) {
                 lines.push(newline);
             }
-            if (!line.match(/^-/)) {
+            // some line start with '\' eg: '\ No newline at end of file'
+            if (line.match(/^[+ ]/)) {
                 newline++;
             }
         });
