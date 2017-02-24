@@ -83,6 +83,8 @@ require('cilint').initializer({
 });
 ```
 
+之后在构建运行时将自动更新配置, 注入git `pre-commit`钩子
+
 ## Configuring 
 
 ### `.cilintrc.js`配置
