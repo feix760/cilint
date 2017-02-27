@@ -211,7 +211,7 @@ class Engine {
         if (options.repo === 'svn') {
             cmd = `svn diff ${filesOption.join(' ')}`;
         } else if (options.repo === 'git') {
-            cmd = `git diff ${options.cached ? '--cached' : ''} ${filesOption.join(' ')}`;
+            cmd = `git diff --ignore-space-at-eol ${options.cached ? '--cached' : ''} ${filesOption.join(' ')}`;
         } else {
             throw new Error('Unsupport repo type', options.repo);
         }
